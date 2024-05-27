@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A website displaying various media files with details like view count, likes, and duration.">
     <title>Media Files Display</title>
     <style>
         body {
@@ -36,11 +37,9 @@
             text-decoration: none;
             color: black;
         }
-
         .img-wrapper {
             position: relative;
         }
-
         .img-wrapper .duration {
             position: absolute;
             bottom: 15px;
@@ -50,14 +49,12 @@
             padding: 10px;
             border-radius: 4px;
         }
-
         .info-wrapper {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
             color: #777;
         }
-           
     </style>
 </head>
 <body>
@@ -66,63 +63,29 @@
     </div>
 
     <script>
-        const mediaFiles = [
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/60QZTFR.png",
-                viewCnt: 21233123,
-                likeCnt: 4322,
-                duration: "10:23",
-                date: "2024 March 12"
-            },
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/w0fV3SS.png",
-                viewCnt: 123123,
-                likeCnt: 4322,
-                duration: "6:23",
-                date: "2024 March 12"
-            },
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/IRFIjTk.png",
-                viewCnt: 123123,
-                likeCnt: 4322,
-                duration: "8:23",
-                date: "2024 March 12"
-            },
-
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/60QZTFR.png",
-                viewCnt: 123123,
-                likeCnt: 4322,
-                duration: "10:23",
-                date: "2024 March 12"
-            },
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/w0fV3SS.png",
-                viewCnt: 123123,
-                likeCnt: 4322,
-                duration: "6:23",
-                date: "2024 March 12"
-            },
-            {
-                linkTo: "https://ajkshdjashdasd.com",
-                imgUrl: "https://i.imgur.com/IRFIjTk.png",
-                viewCnt: 123123,
-                likeCnt: 4322,
-                duration: "8:23",
-                date: "2024 March 12"
-            },
-        ];
-
-        const mediaContainer = document.getElementById('mediaContainer');
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
         function formatNumber(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+
+        const mediaFilesParam = getUrlParameter('mediaFiles');
+        let mediaFiles = [];
+
+        if (mediaFilesParam) {
+            try {
+                mediaFiles = JSON.parse(mediaFilesParam);
+            } catch (e) {
+                console.error('Invalid media files data', e);
+            }
+        }
+
+        const mediaContainer = document.getElementById('mediaContainer');
 
         mediaFiles.forEach(file => {
             const template = `
