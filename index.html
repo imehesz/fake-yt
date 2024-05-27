@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Files Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .media-item {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .media-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .media-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .img-wrapper {
+            position: relative;
+        }
+
+        .img-wrapper .duration {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .info-wrapper {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            color: #777;
+        }
+           
+    </style>
+</head>
+<body>
+    <div class="container" id="mediaContainer">
+        <!-- Media items will be injected here -->
+    </div>
+
+    <script>
+        const mediaFiles = [
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/60QZTFR.png",
+                viewCnt: 21233123,
+                likeCnt: 4322,
+                duration: "10:23",
+                date: "2024 March 12"
+            },
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/w0fV3SS.png",
+                viewCnt: 123123,
+                likeCnt: 4322,
+                duration: "6:23",
+                date: "2024 March 12"
+            },
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/IRFIjTk.png",
+                viewCnt: 123123,
+                likeCnt: 4322,
+                duration: "8:23",
+                date: "2024 March 12"
+            },
+
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/60QZTFR.png",
+                viewCnt: 123123,
+                likeCnt: 4322,
+                duration: "10:23",
+                date: "2024 March 12"
+            },
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/w0fV3SS.png",
+                viewCnt: 123123,
+                likeCnt: 4322,
+                duration: "6:23",
+                date: "2024 March 12"
+            },
+            {
+                linkTo: "https://ajkshdjashdasd.com",
+                imgUrl: "https://i.imgur.com/IRFIjTk.png",
+                viewCnt: 123123,
+                likeCnt: 4322,
+                duration: "8:23",
+                date: "2024 March 12"
+            },
+        ];
+
+        const mediaContainer = document.getElementById('mediaContainer');
+
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        mediaFiles.forEach(file => {
+            const template = `
+                <section class="media-item">
+                    <div class="img-wrapper">
+                        <a href="${file.linkTo}" target="_blank">
+                            <img src="${file.imgUrl}" alt="Media Image" />
+                            <div class="duration">${file.duration}</div>
+                        </a>
+                    </div>
+                    <div class="info-wrapper">
+                        <div>👁 ${formatNumber(file.viewCnt)}</div>
+                        <div>❤ ${formatNumber(file.likeCnt)}</div>
+                        <div>${file.date}</div>
+                    </div>
+                </section>
+            `;
+            mediaContainer.insertAdjacentHTML('beforeend', template);
+        });
+    </script>
+</body>
+</html>
