@@ -81,7 +81,8 @@
             try {
                 mediaFiles = JSON.parse(mediaFilesParam);
             } catch (e) {
-                console.error('Invalid media files data', e);
+                console.error('FAKE-YT: Invalid media files data', e);
+                console.log('FAKE-YT: Usage: ?mediaFiles=[{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/60QZTFR.png","viewCnt":21233123,"likeCnt":4322,"duration":"10:23","date":"2024%20March%2012"},{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/w0fV3SS.png","viewCnt":123123,"likeCnt":4322,"duration":"6:23","date":"2024%20March%2012"},%20{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/60QZTFR.png","viewCnt":21233123,"likeCnt":4322,"duration":"10:23","date":"2024%20March%2012"},{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/w0fV3SS.png","viewCnt":123123,"likeCnt":4322,"duration":"6:23","date":"2024%20March%2012"},{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/60QZTFR.png","viewCnt":21233123,"likeCnt":4322,"duration":"10:23","date":"2024%20March%2012"},{"linkTo":"https://example.com","imgUrl":"https://i.imgur.com/w0fV3SS.png","viewCnt":123123,"likeCnt":4322,"duration":"6:23","date":"2024%20March%2012"}]')
             }
         }
 
